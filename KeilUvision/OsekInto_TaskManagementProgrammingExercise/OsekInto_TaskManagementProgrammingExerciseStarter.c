@@ -17,7 +17,7 @@
 #include "tm4c123gh6pm.h"
 
 /* define this to 1 when using Launchpad and 0 for simulation */
-#define USE_HW 0
+#define USE_HW 1
 
 
 
@@ -51,8 +51,8 @@ TASK(AppTask_Init)
                    GPIO_PIN_TYPE_STD_WPU);
 
 #endif                   
-  ActivateTask(AppTask_Red);
-  TerminateTask(); 
+	ActivateTask(AppTask_Red);
+  TerminateTask();
 }
 TASK(AppTask_Red)
 {

@@ -12,7 +12,7 @@
  *                   ... 
  *             }; 
  *
- /
+ */
 CPU CORTEX-M4 {
       OS S_OSEK {
          STATUS = EXTENDED ;
@@ -38,10 +38,24 @@ CPU CORTEX-M4 {
          PRIORITY = 10;
          SCHEDULE = FULL;
          ACTIVATION = 1;
-         AUTOSTART = TRUE;
+         AUTOSTART = FALSE;
          STACKSIZE = 50;
       };
       TASK AppTask_Green {
+         PRIORITY = 15;
+         SCHEDULE = FULL;
+         ACTIVATION = 1;
+         AUTOSTART = FALSE;
+         STACKSIZE = 50;
+      };
+      TASK AppTask_White {
+         PRIORITY = 15;
+         SCHEDULE = FULL;
+         ACTIVATION = 1;
+         AUTOSTART = FALSE;
+         STACKSIZE = 50;
+      };
+      TASK AppTask_Blue {
          PRIORITY = 15;
          SCHEDULE = FULL;
          ACTIVATION = 1;
