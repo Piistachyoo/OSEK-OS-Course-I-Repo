@@ -16,7 +16,7 @@
 #include "hw_memmap.h"
 #include "tm4c123gh6pm.h"
 
-#define USE_HW 1
+#define USE_HW 0
 
 static uint32_t g_SimulatedLedSignal = 0U; 
 
@@ -46,6 +46,7 @@ TASK(AppTask_Init)
 }
 TASK(AppTask_Green)
 {
+	GetResource(shared_led);
    /*Led on */
    g_SimulatedLedSignal = 0x08U ; 
 #if USE_HW
@@ -57,6 +58,7 @@ TASK(AppTask_Green)
 #endif 
 
    g_SimulatedLedSignal = 0x00U ; 
+	ReleaseResource(shared_led);
    TerminateTask(); 
 }
 TASK(AppTask_Red)
@@ -68,6 +70,8 @@ TASK(AppTask_Red)
                  l_Bit1);
    l_Bit1 ^= GPIO_PIN_1;                
 #endif 
+	GetResource(shared_led);
    g_SimulatedLedSignal ^= 0x02; 
+	ReleaseResource(shared_led);
    TerminateTask(); 
 }

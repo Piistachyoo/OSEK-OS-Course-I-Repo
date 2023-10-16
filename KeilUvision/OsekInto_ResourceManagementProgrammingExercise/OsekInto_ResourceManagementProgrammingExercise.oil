@@ -12,7 +12,7 @@
  *                   ... 
  *             }; 
  *
- /
+ */
 CPU CORTEX-M4 {
       OS S_OSEK {
          STATUS = EXTENDED ;
@@ -40,6 +40,7 @@ CPU CORTEX-M4 {
          ACTIVATION = 1;
          AUTOSTART = FALSE; 
          STACKSIZE = 50;
+         RESOURCE = shared_led;
       };
       TASK AppTask_Red {
          PRIORITY = 20;
@@ -47,6 +48,7 @@ CPU CORTEX-M4 {
          ACTIVATION = 1;
          AUTOSTART = FALSE;
          STACKSIZE = 50;
+         RESOURCE = shared_led;
       };
       ALARM Alrm_SystemTimerUpdate {
          COUNTER = MainCounter;
@@ -82,5 +84,8 @@ CPU CORTEX-M4 {
          MINCYCLE = 1;
          MAXALLOWEDVALUE = 0xFFFFFFFF;
          TICKSPERBASE = 1;
+      };
+      RESOURCE shared_led {
+         RESOURCEPROPERITY = STANDARD ;
       };
 };
